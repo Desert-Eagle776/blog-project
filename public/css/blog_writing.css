@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+input,
+textarea {
+    display: block;
+}
+
+html {
+    max-width: 1298px;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+    background: #162831;
+}
+
+.block {
+    margin: 0 auto;
+    padding: 0px 0px 65px 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.nav {}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    color: #fff;
+    padding: 0px 50px 0px 0px;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #f00f;
+}
+
+.btn {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 15px;
+    background: #018ABE;
+}
+
+.main {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #B7BAA6;
+    background: #E4E5D6;
+    border: 1px solid #B7BAA6;
+    box-shadow: 0px 40px 80px rgba(47, 49, 40, 0.08);
+    border-radius: 4px;
+    padding: 53px 0px 65px 0px;
+    margin-top: 30px;
+}
+
+.header_text {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 51px;
+    color: #21221C;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px 0px 0px 0px;
+}
+
+label {
+    font-size: 18px;
+    line-height: 27px;
+    color: #21221C;
+}
+
+.label_header {
+    padding: 0px 0px 53px 0px;
+}
+
+.header_blog {
+    width: 556px;
+    font-size: 15px;
+    border: 1px solid #CED0C2;
+    border-radius: 4px;
+    box-shadow: inset 0px -8px 16px rgba(33, 34, 28, 0.05);
+    background: #F9F9F6;
+    padding: 9px 16px;
+}
+
+.label_textarea {
+    padding: 0px 0px 20px 0px;
+}
+
+.textarea {
+    width: 556px;
+    height: 271px;
+    font-size: 14px;
+    color: #21221C;
+    resize: none;
+    line-height: 24px;
+    border: 1px solid #CED0C2;
+    border-radius: 4px;
+    box-shadow: inset 0px -16px 32px rgba(33, 34, 28, 0.05);
+    background: #F9F9F6;
+    padding: 9px 16px 16px 16px;
+}
+
+.label_file {
+    padding: 0px 0px 60px 0px;
+}
+
+.file {
+    width: 556px;
+}
+
+.btn-blog {
+    width: 556px;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 34px;
+    color: #E4E5D6;
+    box-shadow: 0px 16px 32px -8px rgba(35, 36, 29, 0.3), inset -4px -4px 8px #2B2D25, inset 4px 4px 8px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: linear-gradient(263.96deg, #36382E 0%, #21221C 100%);
+    padding: 14px 0px;
+}

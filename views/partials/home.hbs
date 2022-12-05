@@ -1,0 +1,57 @@
+<title>Project</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/fonts.css">
+<link rel="stylesheet" href="./css/home.css">
+
+<body>
+    <div class="block">
+        <header class="header">
+            <img src="./img/logo.png" class="logo" alt="Logo">
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/home?page=0">Главная</a></li>
+                    <li><a href="/my-posts">Мои посты</a></li>
+                    <li><a href="/profile">Профиль</a></li>
+                </ul>
+            </nav>
+
+            <a href="/blog_writing" class="btn">Написать блог</a>
+        </header>
+        <main class="main">
+            <div class="header_post">
+                <img src="./img/icon.svg" alt="icon">
+
+                <span class="text__header">Блог</span>
+
+                <img src="./img/icon.svg" alt="icon">
+
+            </div>
+            {{#each articles}}
+            <div class="post">
+                {{#if file}}
+                <img src="./file/{{this.file}}" class="post_image" alt="file">
+                {{else}}
+                <img src="./img/image.png" class="post_image" alt="image">
+                {{/if}}
+                <div class="post-right">
+                    <span class="date">{{this.date}}</span>
+
+                    <p class="post_header">{{this.header}}</p>
+
+                    <p class="post_text">{{this.changedString}}...</p>
+
+                    <a href="/blog_page?post={{this.id}}&page=0" class="post_btn">Читать статью</a>
+                </div>
+
+            </div>
+            {{/each}}
+        </main>
+
+        <div class="pagination">
+            {{#times page}}
+            <a href="/home?page={{this}}" class="link_page">{{this}}</a>
+            {{/times}}
+        </div>
+    </div>
+</body>

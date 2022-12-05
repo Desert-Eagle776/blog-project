@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/my-posts.css">
+
+<div class="block">
+    <header class="header">
+        <img src="./img/logo.png" class="logo" alt="Logo">
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/home?page=0">Главная</a></li>
+                <li><a href="/my-posts">Мои посты</a></li>
+                <li><a href="/profile">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <a href="/blog_writing" class="btn">Написать блог</a>
+    </header>
+
+    <main class="main">
+        <div class="header_post">
+            <img src="./img/icon.svg" alt="icon">
+
+            <span class="text__header">Мои посты</span>
+
+            <img src="./img/icon.svg" alt="icon">
+        </div>
+        <div class="block_cards">
+            {{#each articles}}
+            <div class="card" onclick="javascript:location.href='/blog_page?post={{this.id}}&page=0';">
+                <span class="date">{{this.date}}</span>
+
+                <h2 class="card__header">{{this.header}}</h2>
+            </div>
+            {{/each}}
+        </div>
+        <span class="footer_span">© 2018-2022 RitmStyle</span>
+    </main>
+</div>

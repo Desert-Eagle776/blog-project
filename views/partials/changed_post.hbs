@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/changed_post.css">
+
+<div class="block">
+
+    <header class="header">
+        <img src="./img/logo.png" class="logo" alt="Logo">
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/home?page=0">Главная</a></li>
+                <li><a href="/my-posts">Мои посты</a></li>
+                <li><a href="/profile">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <a href="/blog_writing" class="btn">Написать блог</a>
+    </header>
+
+    <main class="main">
+        <h1 class="header_text">Изменение блога</h1>
+
+        <form action="/changed_post" method="post" enctype="multipart/form-data">
+            {{#each post}}
+            <label for="header" class="label_header">
+                Заголовок
+                <input required type="text" class="header_blog" id="header" placeholder="Заголовок" name="header"
+                    value="{{this.header}}">
+            </label>
+            <label for="text" class="label_textarea">
+                Изменить блог
+                <textarea required minlength="250" class="textarea" id="text" name="text">{{this.text}}</textarea>
+            </label>
+
+            <input type="hidden" value="{{this.id}}" name="postId">
+            {{/each}}
+
+            <div class="block_files">
+                {{#each files}}
+                <img src="./file/{{this.filename}}" alt="file" class="file_post">
+                {{/each}}
+            </div>
+
+            <label for="file" class="label_file">
+                Прикрепить файл
+                <input type="file" class="file" id="file" placeholder="Добавить файл" name="file">
+                <button class="btn-file">Прикрепить</button>
+            </label>
+
+            <button class="btn-blog">Изменить &#9993;</button>
+        </form>
+    </main>
+</div>

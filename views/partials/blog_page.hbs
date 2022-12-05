@@ -1,0 +1,337 @@
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/fonts.css">
+<link rel="stylesheet" href="./css/blog_page.css">
+
+<div class="block">
+    <header class="header">
+        <img src="./img/logo.png" class="logo" alt="Logo">
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/home?page=0">Главная</a></li>
+                <li><a href="/my-posts">Мои посты</a></li>
+                <li><a href="/profile">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <a href="/blog_writing" class="btn">Написать блог</a>
+    </header>
+    {{#each article}}
+    <main class="main">
+        <div class="header_post">
+            <img src="./img/icon.svg" alt="icon">
+
+            <span class="text__header">{{this.header}}</span>
+
+            <img src="./img/icon.svg" alt="icon">
+
+        </div>
+        {{#if ../comparison}}
+        <div class="blog_correction">
+            <a href="/changed_post?post={{this.id}}" class="editing_post">Редактировать</a>
+            <a href="/remove_post?post={{this.id}}" class="remove_post">Удалить</a>
+        </div>
+        {{/if}}
+        <div class="post">
+            <div class="post_left">
+                {{#if update_date}}
+                <span class="date">Отредактировано {{this.update_date}}</span>
+                {{else}}
+                <span class="date">{{this.date}}</span>
+                {{/if}}
+
+                {{#if ../files}}
+                <p class="text">{{this.text}}</p>
+            </div>
+            {{#each ../files}}
+            <div class="post_image">
+                <img src="./file/{{this.filename}}" class="image" alt="image">
+            </div>
+            {{/each}}
+
+            <div class="post_left">
+                {{else}}
+                <p class="text2">{{this.text}}</p>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="block_comments">
+            <p class="header_comments">Комментарии</p>
+            {{#each comments}}
+            <div class="comment" id="{{this.id}}">
+                <div class="user">
+                    {{#each ../comments.user}}
+                    <img src="./file/avatar/{{this.avatar}}" alt="image" class="avatar">
+                    <span class="username">{{this.name}}</span>
+                    {{/each}}
+                    <span class="date_the_comment">{{this.date}}</span>
+                </div>
+
+
+                <p class="user_comment" id="{{this.id}}">{{this.comment}}</p>
+
+                <div class="reaction" id="{{this.id}}">
+                    {{#each ../reaction}}
+                    {{#when this.id "eq" ../this.id}}
+                    <span class="emoji">{{this.code}}</span>
+                    <span>{{this.count}}</span>
+                    {{/when}}
+                    {{/each}}
+                </div>
+
+
+                {{#if this.comparison}}
+                <div class="action_with_comment">
+                    <a href="/changed_comment?id={{this.id}}" class="editing_comment">Редактировать</a>
+                    <a href="/remove_comment?comment_id={{this.id}}" class="remove_comment">Удалить</a>
+                </div>
+                {{/if}}
+            </div>
+            {{/each}}
+
+            <div class="link_page">
+                {{#times pages}}
+                <a href="/blog_page?post={{{../postId}}}&page={{this}}" class="link_page-link">{{this}}</a>
+                {{/times}}
+            </div>
+
+            <div class="added_comment">
+                <form action="/added_comment" method="post" class="form">
+                    {{#each avatar}}
+                    <img src="./file/avatar/{{this.avatar}}" alt="" class="comment_avatar">
+                    {{/each}}
+                    <textarea name="comment" class="textarea" placeholder="Добавить комментарий…"></textarea>
+
+                    <button class="btn_comment">Отправить</button>
+                    {{#each article}}
+                    <input type="hidden" name="post_id" value="{{this.id}}">
+                    {{/each}}
+                    {{#each comments}}
+                    <input type="hidden" name="comment_id" value="{{this.id}}" id="input">
+                    {{/each}}
+                </form>
+            </div>
+        </div>
+
+        {{#each author}}
+        <div class="block_footer">
+            <div class="block-image">
+                <img src="./file/avatar/{{this.avatar}}" class="user_image" alt="Image">
+            </div>
+            <div class="block-info">
+                <p class="user_fullname">{{this.name}}</p>
+                <p class="author">Автор</p>
+                <p class="user_email">{{this.email}}</p>
+            </div>
+        </div>
+        {{/each}}
+        <span class="footer_span">© 2018-2022 RitmStyle</span>
+    </main>
+</div>
+
+
+<script>
+    let comment = document.querySelectorAll('.comment')
+
+    let divArr = Array.from(comment)
+    let data = 0;
+
+    for (let i = 0; i < divArr.length; i++) {
+        let commentsId = 0;
+        divArr[i].addEventListener('click', (e) => {
+            console.log(e.target)
+
+            if (e.target.classList.contains('editing_comment')) {
+                addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    let textarea = document.querySelector('.textarea');
+
+                    if (e.target.href) {
+                        let form = document.querySelector('.form')
+                        form.action = '/changed_comment'
+
+                        let url = new URL(e.target.href).searchParams;
+                        let commentId = url.get('id');
+                        console.log(commentId)
+
+                        let commentText = document.querySelectorAll('.user_comment')
+                        console.log(commentText)
+
+                        let commentTextArr = Array.from(commentText);
+                        console.log(commentTextArr)
+
+                        let hiddenId = document.querySelectorAll('#input')
+                        let arr = Array.from(hiddenId)
+
+
+                        for (let i = 0; i < commentTextArr.length; i++) {
+                            console.log(commentTextArr[i].id, 'click')
+
+                            if (commentTextArr[i].id === commentId) {
+                                console.log('Hi-hi')
+                                textarea.value = commentTextArr[i].innerHTML
+                                commentsId = commentTextArr[i].id
+                                textarea.name = 'changeComment';
+                                btn.innerHTML = 'Изменить'
+
+                                console.log(commentsId, 'Id')
+                            }
+                        }
+
+                    } else {
+                        url = null
+                    }
+                })
+            }
+            let form = document.querySelector('.form')
+            let btn = document.querySelector('.btn_comment');
+            btn.addEventListener('click', (e) => {
+                let commentChange = form.elements['changeComment'].value;
+                let postId = form.elements['post_id'].value;
+
+                console.log(commentsId, commentChange, postId)
+
+                data = JSON.stringify({ changeComment: commentChange, comment_id: commentsId, post_id: postId, redirect: `/blog_page?post=${postId}&page=0` })
+
+                let req = new XMLHttpRequest();
+
+                req.open('POST', 'http://localhost:3001/changed_comment', true);
+                req.setRequestHeader('Content-Type', 'application/json');
+
+                let dataObj = JSON.parse(data)
+                console.log(dataObj.redirect)
+
+                req.addEventListener("load", function () {
+                    if (typeof dataObj.redirect == 'string')
+                        window.location = dataObj.redirect
+                });
+
+                req.send(data);
+            })
+
+            if (e.target.classList.contains('remove_comment')) {
+                addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    let data = 0;
+                    let commentId = 0;
+                    let linkPage = new URL(location.href).searchParams;
+                    console.log(linkPage);
+
+                    let page = linkPage.get('page');
+                    console.log(page)
+
+                    if (e.target.href) {
+                        let url = new URL(e.target.href).searchParams;
+                        commentId = url.get('comment_id');
+                        console.log(commentId)
+
+                        const form = document.querySelector('.form');
+                        const postId = form.elements['post_id'].value;
+
+                        console.log(postId)
+
+                        data = JSON.stringify({ comment_id: commentId, redirect: `/blog_page?post=${postId}&page=${page}` })
+                    }
+
+                    const req = new XMLHttpRequest();
+
+                    req.open('POST', 'http://localhost:3001/remove_comment', true);
+                    req.setRequestHeader('Content-Type', 'application/json');
+
+                    let dataObj = JSON.parse(data)
+                    console.log(dataObj.redirect)
+
+                    req.addEventListener("load", function () {
+                        if (typeof dataObj.redirect == 'string')
+                            window.location = dataObj.redirect
+                    });
+
+                    req.send(data);
+                })
+            }
+
+            let reaction = document.querySelectorAll('.reaction');
+            let reactionArr = Array.from(reaction);
+
+            console.log(reactionArr)
+            let divId = divArr[i].id
+            console.log(divId, 'div id')
+
+            for (let i = 0; i < reactionArr.length; i++) {
+                console.log(reactionArr[i].id, 'lili')
+                let reactionId = reactionArr[i].id;
+                console.log(reactionId, 'reaction id')
+
+                let data = 0;
+
+                let linkPage = new URL(location.href).searchParams;
+                console.log(linkPage);
+
+                let page = linkPage.get('page');
+                console.log(page)
+
+                const form = document.querySelector('.form');
+                const postId = form.elements['post_id'].value;
+
+                if (divId === reactionArr[i].id) {
+                    console.log(e.target, 'ji-ji')
+                    /*reactionArr[i].style.display = 'block';
+                    reactionArr[i].style.cursor = 'pointer';*/
+
+                    let emoji = 0;
+                    if (e.target.classList.contains('emoji')) {
+                        emoji = e.target.innerHTML;
+
+                        if (emoji != 0) {
+                            data = JSON.stringify({ commentId: divId, reaction: emoji, redirect: `/blog_page?post=${postId}&page=${page}` })
+                        }
+                        console.log(emoji, 'smile')
+                    }
+
+                    console.log(data, 'data')
+
+                }
+
+                let req = new XMLHttpRequest();
+
+                req.open('POST', 'http://localhost:3001/added_reaction', true);
+                req.setRequestHeader('Content-Type', 'application/json');
+
+                let dataObj = JSON.parse(data)
+                console.log(dataObj.redirect)
+
+                req.addEventListener('load', (e) => {
+                    if (typeof dataObj.redirect == 'string')
+                        window.location = dataObj.redirect
+                })
+
+                if (data != 0) {
+                    console.log(data, 'XML')
+                    req.send(data);
+                }
+            }
+        })
+
+        /*let reaction = document.querySelector('.reaction');
+        console.log(reaction)
+        let reactionArr = Array.from(reaction);
+        console.log(reactionArr)
+
+        divArr[i].addEventListener('click', (e) => {
+            console.log('mousemove');
+            for (let i = 0; i < reactionArr.length; i++) {
+                console.log(reactionArr[i].id)
+                if (divArr[i].id === reactionArr[i].id) {
+
+                    reaction.style.display = 'block';
+                }
+            }
+        })*/
+    }
+
+
+</script>

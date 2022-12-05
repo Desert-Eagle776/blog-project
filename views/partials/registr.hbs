@@ -1,0 +1,31 @@
+<title>Аутентифікація</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/fonts.css">
+<link rel="stylesheet" href="./css/registr.css">
+
+<body>
+    <div class="block">
+        <p class="registr_text">Регистрация</p>
+
+        <form action="/" method="post">
+            <label for="email">
+                Email
+                <input required type="email" placeholder="Введите Email" name="email">
+            </label>
+
+            <label for="name">
+                Имя
+                <input required type="text" placeholder="Введите имя" name="name">
+            </label>
+
+            <label for="password">
+                Пароль
+                <input required type="password" placeholder="Создайте пароль" name="password">
+            </label>
+
+            <button class="btn">Регистрация</button>
+        </form>
+
+        <p class="footer_text">Уже есть учетная запись? <a href="/auto">Войти</a></p>
+    </div>
+</body>

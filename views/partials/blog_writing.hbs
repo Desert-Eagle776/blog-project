@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/blog_writing.css">
+
+<div class="block">
+
+    <header class="header">
+        <img src="./img/logo.png" class="logo" alt="Logo">
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/home?page=0">Главная</a></li>
+                <li><a href="/my-posts">Мои посты</a></li>
+                <li><a href="/profile">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <a href="/blog_writing" class="btn">Написать блог</a>
+    </header>
+
+    <main class="main">
+        <h1 class="header_text">Создание блога</h1>
+
+        <form action="/blog_writing" method="post" enctype="multipart/form-data">
+            <label for="header" class="label_header">
+                Заголовок (обязательное поле)
+                <input required type="text" class="header_blog" id="header" placeholder="Заголовок" name="header">
+            </label>
+            <label for="text" class="label_textarea">
+                Написать блог (обязательное поле)
+                <textarea required minlength="250" class="textarea" id="text" name="text"></textarea>
+            </label>
+            <label for="file" class="label_file">
+                Прикрепить файл
+                <input type="file" class="file" id="file" placeholder="Добавить файл" name="file">
+                <button class="btn-file">Прикрепить</button>
+            </label>
+
+            <button class="btn-blog">Опубликовать &#9993;</button>
+        </form>
+    </main>
+</div>

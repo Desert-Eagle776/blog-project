@@ -1,0 +1,109 @@
+html {
+    max-width: 1298px;
+    margin: 0 auto;
+    font-family: 'Nunito', sans-serif;
+    background: #162831;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.nav {}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    color: #fff;
+    padding: 0px 50px 0px 0px;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #f00f;
+}
+
+.btn {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 15px;
+    background: #018ABE;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header_post {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0px 60px 0px;
+}
+
+.text__header {
+    display: inline-block;
+    font-family: "Open Sans", serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    padding: 0px 45px;
+}
+
+.block_cards {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 100px;
+}
+
+a {
+    display: block;
+}
+
+.card {
+    width: 400px;
+    height: 258px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(1, 138, 190, 0.5), rgba(1, 138, 190, 0.5)), url(/img/background.png);
+    padding: 30px 45px 30px 35px;
+    margin: 0px 24px 24px 0px;
+}
+
+.date {
+    color: #fff;
+    background: #018ABE;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+.card__header {
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+    padding-top: 144px;
+}
+
+.footer_span {
+    display: inline-block;
+    color: #fff;
+    padding: 30px 0px 20px 0px;
+}

@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/profile.css">
+
+<div class="block">
+
+    <header class="header">
+        <img src="./img/logo.png" class="logo" alt="Logo">
+
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/home?page=0">Главная</a></li>
+                <li><a href="/my-posts">Мои посты</a></li>
+                <li><a href="/profile">Профиль</a></li>
+            </ul>
+        </nav>
+
+        <a href="/blog_writing" class="btn">Написать блог</a>
+    </header>
+
+    {{#each info}}
+    <form action="/change_profile" method="post" enctype="multipart/form-data">
+        <img src="./file/avatar/{{this.avatar}}" class="image" alt="image">
+
+        <label for="name">
+            Имя
+            <input type="text" id="name" name="name" class="name" value="{{this.name}}">
+        </label>
+        <label for="email">
+            E-mail
+            <input disabled type="email" id="email" class="email" value="{{this.email}}">
+        </label>
+        <label for="file">
+            Изменить аватар
+            <input type="file" id="file" name="avatar" class="file">
+        </label>
+
+        <button class="btn_profile">Изменить</button>
+
+        <p class="date">Дата регистрации: {{this.date}}</p>
+    </form>
+    {{/each}}
+</div>

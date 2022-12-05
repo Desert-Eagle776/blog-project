@@ -1,0 +1,138 @@
+html {
+    background: #162831;
+    font-family: "Open Sans", sans-serif;
+    height: 100%;
+}
+
+.block {
+    max-width: 1298px;
+    margin: 0 auto;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.nav {}
+
+.nav-list {
+    display: flex;
+}
+
+.nav-list li {
+    color: #fff;
+    padding: 0px 50px 0px 0px;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #f00f;
+}
+
+.btn {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 3px;
+    padding: 9px 15px;
+    background: #018ABE;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header_post {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0px 60px 0px;
+}
+
+.text__header {
+    display: inline-block;
+    font-family: "Open Sans", serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    padding: 0px 45px;
+}
+
+.post {
+    display: flex;
+    border: 2px solid #018ABE;
+    border-radius: 20px;
+    padding: 50px 60px;
+    margin-bottom: 45px;
+}
+
+.post-right {
+    padding: 0px 0px 0px 50px;
+}
+
+.date {
+    color: #fff;
+    background: #018ABE;
+    border-radius: 5px;
+    padding: 6px 12px 5px 12px;
+}
+
+.post_image {
+    width: 564px;
+    border-radius: 10px;
+}
+
+.post_header {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "El Messiri", serif;
+    color: #fff;
+    padding: 35px 0px 20px 0px;
+}
+
+.post_text {
+    font-size: 16px;
+    color: #fff;
+    line-height: 22px;
+    padding: 0px 0px 40px 0px;
+}
+
+.post_btn {
+    font-weight: 700;
+    color: #fff;
+    line-height: 18px;
+    border-radius: 5px;
+    background: #018ABE;
+    padding: 10px 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 50px 0px;
+}
+
+.link_page {
+    display: inline-block;
+    font-weight: 700;
+    color: #000;
+    border-radius: 4px;
+    background: #DFE3E8;
+    padding: 10px 15px;
+    margin-right: 6px;
+}
